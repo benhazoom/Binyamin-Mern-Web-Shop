@@ -1,6 +1,19 @@
+import {Container} from 'react-bootstrap';
+import Header from './components/Header';
+import Footer from './components/Footer';
+
+
 const App = () => {
   return (
-    <p>Welcome to Binyamin web shop</p>
+    <>
+    <Header/>
+    <main className='py-3'>
+      <Container>
+    <h1>Welcome to Binyamin web shop</h1>
+      </Container>
+    </main>
+    <Footer/>
+    </>
   )
 }
 
