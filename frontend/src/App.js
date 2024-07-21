@@ -1,6 +1,6 @@
 const App = () => {
   return (
-    <h1>Welcome to Binyamin web shop</h1>
+    <p>Welcome to Binyamin web shop</p>
   )
 }
 
