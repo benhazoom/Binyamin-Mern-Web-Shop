@@ -1,7 +1,9 @@
 # Pro Shop - MERN project (MongoDB,Express,React,Node.js)
 
 ## Explanation on key features
-React Router - allowes us to easely routing to differant pages without sending requests to the server that takes long time
+
+### React Router
+allowes us to easely routing to differant pages without sending requests to the server that takes long time
 why ? - we use it for simplicity and for much better performance when moving from page to page
 
 ### usedComponents:
