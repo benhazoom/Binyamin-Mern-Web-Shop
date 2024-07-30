@@ -3,8 +3,15 @@ import products from './data/products.js';
 import dotenv from 'dotenv'
 dotenv.config();
 const port = process.env.PORT || 5000;
-
+import mongoose from "mongoose"
 const app = express();
+
+const connectDB = mongoose
+  .connect(process.env.MONGO_URI)
+  .then((result) => {
+    console.log(`MongoDB Connected: ${result.connection.host}`);
+  })
+  .catch((err) => console.log(err));
 
 app.get('/api/products', (req, res) => {
   res.json(products);
