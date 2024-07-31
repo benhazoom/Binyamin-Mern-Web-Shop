@@ -71,6 +71,18 @@ const products = [
     rating: 4,
     numReviews: 12,
   },
+  {
+    name: 'LELIT Bianca - PL162T',
+    image: '/images/PL162T.jpg',
+    description:
+      'Dual boiler E61 PID espresso machine that delivers excellent coffee and ensures ease of use',
+    brand: 'Lelit',
+    category: 'Coffee Machines',
+    price: 2639.99,
+    countInStock: 1,
+    rating: 4.9,
+    numReviews: 5,
+  },
 ]
 
 export default products

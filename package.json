@@ -5,6 +5,8 @@
   "type": "module",
   "main": "server.js",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "js-tokens": "^4.0.0",
@@ -17,7 +19,9 @@
     "start": "node beckend/server.js",
     "server": "nodemon beckend/server.js",
     "client": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "data:import": "node backend/seeder.js",
+    "data:destroy": "node backend/seeder.js -d"
   },
   "author": "Binyamin Hazoom",
   "license": "MIT",
