@@ -108,30 +108,22 @@ jane@email.com (Customer)
 123456
 ```
 
----
 
 ## Bug Fixes, corrections and code FAQ
 
----
 
 ## License
-
 This project is licensed under the MIT License. See the LICENSE file for more details.
 
-
----
 
 ## Contact Information
 For any questions or support, please reach out to me via email: benhazoom12@gmail.com
 
----
 
 ## Acknowledgments
 I would like to acknowledge Brad Traversy, Full Stack Web Developer & Instructor at Traversy Media, for his major help in making this project.
 The course for this project can be found here [MERN Stack From Scratch | eCommerce Platform](https://www.traversymedia.com/mern-stack-from-scratch) course.
 
-
----
 
 ## Credits
 This project was developed as part of a course taught by Brad Traversy. The original code and structure were created by Brad Traversy, and parts of this README were adapted from his original project README. His guidance and resources were invaluable in the creation of this project.
