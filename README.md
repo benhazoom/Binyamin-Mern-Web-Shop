@@ -9,7 +9,7 @@
 
 - [Features](#features)
 - [Usage](#usage)
-  - [Env Variables](#env-variables)
+  - [Env Variables](#Environment Variables)
   - [Install Dependencies (frontend & backend)](#install-dependencies-frontend--backend)
   - [Run](#run)
 - [Build & Deploy](#build--deploy)
