@@ -112,7 +112,6 @@ jane@email.com (Customer)
 
 ## Bug Fixes, corrections and code FAQ
 
-empty for now 
 ---
 
 ## License
