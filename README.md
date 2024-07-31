@@ -15,7 +15,7 @@
 - [Build & Deploy](#build--deploy)
   - [Seed Database](#seed-database)
 
-* [Bug Fixes, corrections and code FAQ]
+* [Bug Fixes, corrections and code FAQ](#bug-fixes-corrections-and-code-faq)
 * [License](#license)
 
 <!-- tocstop -->
