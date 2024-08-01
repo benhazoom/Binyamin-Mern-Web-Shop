@@ -1,6 +1,8 @@
 import { Row, Col } from 'react-bootstrap';
 import Product from '../components/Product';
 import {useGetProductsQuery} from '../slices/productApiSlice';
+import Loader from '../components/Loader';
+import Message from '../components/Message';
 
 const HomeScreen = () => {
   //now you see the true power of redux dev tools 
@@ -10,10 +12,11 @@ const HomeScreen = () => {
   return (
     <>
     { isLoading? (
-      <h2>Loading...</h2>
-    ):error? (<div>
+      <Loader/>
+
+    ):error? (<Message variant='danger'>
       {error?.data?.message || error.error}
-    </div>): (
+    </Message>): (
       <>
       <h1>Latest Products</h1>
       <Row>
