@@ -13,8 +13,14 @@ export const productApiSlice = apiSlice.injectEndpoints({
             // Keeps unused data in the cache for 5 seconds
             keepUnusedDataFor: 5,
         }),
+        getProductDetails: builder.query({
+            query: (productId) => ({
+                url: `${PRODUCTS_URL}/${productId}`,
+            }),
+            keepUnusedDataFor: 5,
+        })
     }),
 });
 
 // Exports a custom hook for the getProducts query
-export const { useGetProductsQuery } = productApiSlice;
+export const { useGetProductsQuery ,useGetProductDetailsQuery} = productApiSlice;
