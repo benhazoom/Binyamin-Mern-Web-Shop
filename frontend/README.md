@@ -38,4 +38,4 @@ The DevTools were invaluable during this time, allowing the scholars to track th
 
 In the end, Reduxia emerged stronger and more resilient. The kingdom had learned the importance of maintaining balance and harmony through well-managed state changes, guided by the ancient principles of the Store, Reducers, and DevTools. The realm continued to flourish, its magic now even more predictable and robust, thanks to the lessons learned during the great upheaval.
 
-And so, the realm of Reduxia remained a beacon of order and stability, where every action and change was carefully monitored and managed, ensuring that peace and prosperity would reign for generations to come.ss
+And so, the realm of Reduxia remained a beacon of order and stability, where every action and change was carefully monitored and managed, ensuring that peace and prosperity would reign for generations to come.
