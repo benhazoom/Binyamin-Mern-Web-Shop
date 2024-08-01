@@ -6,19 +6,19 @@ here I will provide some explanetions about the key technologies used in the fro
 
 Redux provides a structured approach to state management by centralizing the state in a single store and enforcing predictable state changes through actions and reducers. This ensures consistent state updates, simplifies debugging with tools like Redux DevTools, and supports scalability for large applications. By managing state immutably and leveraging middleware, Redux makes the application more maintainable and testable.
 
-1. Redux DevTools
+### 1. Redux DevTools
 Redux DevTools is a set of tools that helps developers debug and understand the state changes in their Redux applications. It provides features like state inspection, action logging, time travel, state mutation prevention, and performance monitoring.
 
-2. Store
+### 2. Store
 The store is an object that holds the entire state of the Redux application. It provides methods such as getState() to access the current state, dispatch(action) to send actions that update the state, and subscribe(listener) to register callbacks that are invoked when actions are dispatched. The store acts as a central hub for state management, ensuring that state changes are predictable and traceable. 
 
-3. Slices
+### 3. Slices
 In Redux Toolkit, a slice is a way to define a piece of the Redux state along with the actions and reducers that operate on that piece of state. Slices simplify Redux code by automatically generating action creators and reducers based on the state and handlers you define.
 
-4. Reducers
+### 4. Reducers
 Reducers are pure functions that take the current state and an action as arguments and return a new state. They specify how the application's state changes in response to actions sent to the store and must be pure and side-effect-free.
 
-5. Actions
+### 5. Actions
 Actions are plain JavaScript objects that describe an event in the application, containing a type property and optionally a payload property. They are dispatched to the store to trigger state changes.
 
 Things are unclear? you might want to read this tale
