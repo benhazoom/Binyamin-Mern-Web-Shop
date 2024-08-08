@@ -13,7 +13,7 @@ const protect = asyncHandler(async (req, res, next) => {
   if (token) {
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET); //decoded will be an object that has userId property as defined in userController token definition
-      req.user = await User.findById(decoded.userId).select("-password");
+      req.user = await User.findById(decoded.userID).select("-password");
       next();
     } catch (error) {
       console.log(error);
