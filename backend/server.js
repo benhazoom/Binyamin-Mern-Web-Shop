@@ -4,6 +4,7 @@ import productRoutes from "./routes/productRoutes.js"
 import userRoutes from "./routes/userRoutes.js"
 import { notFound,errorHandler } from "./middleware/errorMiddleware.js";
 import connectDB from './config/db.js';
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 const port = process.env.PORT || 5000;
@@ -11,7 +12,8 @@ const app = express();
 //body parser middleweres - shouls allow us to be able to parse req.body from api calls
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-
+//cookie parser middlewere - allow us to access req.cookies
+app.use(cookieParser());
 connectDB();
 
 app.use ('/api/products',productRoutes);//when going to this route api/products will be processed via productRoutes
