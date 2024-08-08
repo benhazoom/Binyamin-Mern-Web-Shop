@@ -1,9 +1,8 @@
 //The controller acts as a bridge between the application's routes and the underlying business logic and data management,
 //ensuring that requests are processed correctly and responses are sent back to the client.
-
-import e from 'express';
 import asyncHandler from '../middleware/asyncHandler.js';
 import User from '../models/userModel.js';
+import jwt from "jsonwebtoken";
 
 // @desc    Auth user & get token
 // @route   POST /api/users/login
@@ -13,6 +12,17 @@ const authUser = asyncHandler(async (req, res) => {
   const user = await User.findOne({email});
   //using the methid from userModel to validate password 
   if (user && (await user.matchPassword(password))){
+    //now that the user is Autenticated we provide jwt
+    const token = jwt.sign({userId:user._id}, process.env.JWT_SECRET, {
+      expiresIn:'1d'
+    })
+    //now we set the jwt as a HTTP-Only cookie
+    res.cookie('jwt',token,{
+      httpOnly:true,
+      secure: process.env.Node_ENV !=='development',
+      sameSite:'strict',
+      maxAge: 1 * 24 * 60 * 60 * 1000 //maxAge is in milliseconds and we want 1 days
+    })
     res.json({
       _id:user._id,
       name:user.name,
