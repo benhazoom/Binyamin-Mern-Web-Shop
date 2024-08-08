@@ -1,39 +1,29 @@
 //The controller acts as a bridge between the application's routes and the underlying business logic and data management,
 //ensuring that requests are processed correctly and responses are sent back to the client.
-import asyncHandler from '../middleware/asyncHandler.js';
-import User from '../models/userModel.js';
-import jwt from "jsonwebtoken";
-
+import asyncHandler from "../middleware/asyncHandler.js";
+import User from "../models/userModel.js";
+import generateToken from "../utils/generateToken.js";
 
 // @desc    Auth user & get token
 // @route   POST /api/users/login
 // @access  Public
 const authUser = asyncHandler(async (req, res) => {
-  const {email,password} = req.body; 
-  const user = await User.findOne({email});
-  //using the methid from userModel to validate password 
-  if (user && (await user.matchPassword(password))){
-    //now that the user is Autenticated we provide jwt
-    const token = jwt.sign({userId:user._id}, process.env.JWT_SECRET, {
-      expiresIn:'1d'
-    })
-    //now we set the jwt as a HTTP-Only cookie
-    res.cookie('jwt',token,{
-      httpOnly:true,
-      secure: process.env.Node_ENV !=='development',
-      sameSite:'strict',
-      maxAge: 1 * 24 * 60 * 60 * 1000 //maxAge is in milliseconds and we want 1 days
-    })
+  const { email, password } = req.body;
+  const user = await User.findOne({ email });
+  //using the methid from userModel to validate password
+  if (user && (await user.matchPassword(password))) {
+    //now that the user is Autenticated we provide jwt via util method we made
+    generateToken(res, user._id);
+
     res.json({
-      _id:user._id,
-      name:user.name,
+      _id: user._id,
+      name: user.name,
       email: user.email,
-      isAdmin: user.isAdmin
-    })
-  }
-  else{
-  res.status(401);//unauthorized status
-  throw new Error('Invalid email or password');
+      isAdmin: user.isAdmin,
+    });
+  } else {
+    res.status(401); //unauthorized status
+    throw new Error("Invalid email or password");
   }
 });
 
@@ -41,7 +31,33 @@ const authUser = asyncHandler(async (req, res) => {
 // @route   POST /api/users
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
-  res.send("register user");
+  const { name, email, password } = req.body;
+  const userExists = await User.findOne({ email });
+
+  if (userExists) {
+    res.status(400); //client error
+    throw new Error("User already exists");
+  }
+
+  const user = await User.create({
+    name,
+    email,
+    password,
+  });
+
+  if (user) {
+    generateToken(res, user._id);
+
+    res.status(201).json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+    });
+  } else {
+    res.status(400);
+    throw new Error("Invalid user data");
+  }
 });
 
 // @desc    Logout user & clear cookie
@@ -49,11 +65,11 @@ const registerUser = asyncHandler(async (req, res) => {
 // @access  Privet
 const logoutUser = asyncHandler(async (req, res) => {
   //logout means essentially clearing cookies
-  res.cookie('jwt','',{
-    httpOnly:true,
-    expires: new Date(0)
+  res.cookie("jwt", "", {
+    httpOnly: true,
+    expires: new Date(0),
   });
-  res.status(200).json({ message: 'Logged out successfully'})
+  res.status(200).json({ message: "Logged out successfully" });
 });
 
 // @desc    Get user profile
@@ -81,8 +97,8 @@ const getUsers = asyncHandler(async (req, res) => {
 // @route   GET /api/users/:id
 // @access  Privet/Admin
 const getUserByID = asyncHandler(async (req, res) => {
-    res.send("get user by id");
-  });
+  res.send("get user by id");
+});
 
 // @desc    Delete user
 // @route   DELETE /api/users/:id
@@ -99,12 +115,13 @@ const updateUser = asyncHandler(async (req, res) => {
 });
 
 export {
-    authUser,
-    registerUser,
-    logoutUser,
-    getUserProfile,
-    updateUserProfile,
-    getUsers,
-    deleteUser,
-    getUserByID,updateUser
-}
+  authUser,
+  registerUser,
+  logoutUser,
+  getUserProfile,
+  updateUserProfile,
+  getUsers,
+  deleteUser,
+  getUserByID,
+  updateUser,
+};
