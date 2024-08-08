@@ -8,6 +8,9 @@ import connectDB from './config/db.js';
 dotenv.config();
 const port = process.env.PORT || 5000;
 const app = express();
+//body parser middleweres - shouls allow us to be able to parse req.body from api calls
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 
 connectDB();
 

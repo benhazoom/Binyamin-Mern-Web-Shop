@@ -1,6 +1,7 @@
 //The controller acts as a bridge between the application's routes and the underlying business logic and data management,
 //ensuring that requests are processed correctly and responses are sent back to the client.
 
+import e from 'express';
 import asyncHandler from '../middleware/asyncHandler.js';
 import User from '../models/userModel.js';
 
@@ -8,7 +9,21 @@ import User from '../models/userModel.js';
 // @route   POST /api/users/login
 // @access  Public
 const authUser = asyncHandler(async (req, res) => {
-  res.send("Auth user");
+  const {email,password} = req.body; 
+  const user = await User.findOne({email});
+  //using the methid from userModel to validate password 
+  if (user && (await user.matchPassword(password))){
+    res.json({
+      _id:user._id,
+      name:user.name,
+      email: user.email,
+      isAdmin: user.isAdmin
+    })
+  }
+  else{
+  res.status(401);//unauthorized status
+  throw new Error('Invalid email or password');
+  }
 });
 
 // @desc    Register user & get token
