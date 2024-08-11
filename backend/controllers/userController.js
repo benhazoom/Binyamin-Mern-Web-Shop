@@ -77,7 +77,6 @@ const logoutUser = asyncHandler(async (req, res) => {
 // @access  Privet
 const getUserProfile = asyncHandler(async (req, res) => {
   // res.json(req.cookies.jwt)//debugging the cookie not working fix wrong usage in authMiddlewere req.user = await User.findById(decoded.userID).select("-password");
-
   const user = await User.findById(req.user._id);
   if (user){
     res.status(200).json({
