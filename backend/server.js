@@ -19,7 +19,7 @@ connectDB();
 
 app.use ('/api/products',productRoutes);//when going to this route api/products will be processed via productRoutes
 app.use ('/api/users',userRoutes);
-// app.use ('/api/orders',orderRoutes);
+app.use ('/api/orders',orderRoutes);
 
 app.get('/', (req, res) => {
   res.send('API is running...');
