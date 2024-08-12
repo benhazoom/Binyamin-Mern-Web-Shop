@@ -1,51 +1,54 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { updateCart } from "../utils/cartUtils";
+import { createSlice } from '@reduxjs/toolkit';
+import { updateCart } from '../utils/cartUtils';
 
-const initialState = localStorage.getItem("cart")
-  ? JSON.parse(localStorage.getItem("cart"))
-  : { cartItems: [] ,shippingAddress:{},paymentMethod:''};
+const initialState = localStorage.getItem('cart')
+  ? JSON.parse(localStorage.getItem('cart'))
+  : { cartItems: [], shippingAddress: {}, paymentMethod: 'PayPal' };
 
 const cartSlice = createSlice({
-  name: "cart",
+  name: 'cart',
   initialState,
   reducers: {
-    //state is the current state of the cart,
-    //action is the payload - item to add to the cart
     addToCart: (state, action) => {
       const item = action.payload;
-      const existItem = state.cartItems.find(
-        (cartItem) => cartItem._id === item._id
-      );
+
+      const existItem = state.cartItems.find((x) => x._id === item._id);
 
       if (existItem) {
-        state.cartItems = state.cartItems.map((cartItem) =>
-          cartItem._id === existItem._id ? item : cartItem
+        state.cartItems = state.cartItems.map((x) =>
+          x._id === existItem._id ? item : x
         );
       } else {
-        //were not typing like this because state is imutable
-        // state.cartItems = state.cartItems.push(item);
-        //instead we make a copy and assigning it to the state
         state.cartItems = [...state.cartItems, item];
       }
 
-      return updateCart(state);
+      return updateCart(state, item);
     },
     removeFromCart: (state, action) => {
-      state.cartItems = state.cartItems.filter((cartItem) => cartItem._id !== action.payload
-      );
-
+      state.cartItems = state.cartItems.filter((x) => x._id !== action.payload);
       return updateCart(state);
     },
     saveShippingAddress: (state, action) => {
-      state.shippingAddress = action.payload
-      return updateCart(state);
+      state.shippingAddress = action.payload;
+      localStorage.setItem('cart', JSON.stringify(state));
     },
     savePaymentMethod: (state, action) => {
-      state.paymentMethod = action.payload
-      return updateCart(state);
-    }
+      state.paymentMethod = action.payload;
+      localStorage.setItem('cart', JSON.stringify(state));
+    },
+    clearCartItems: (state, action) => {
+      state.cartItems = [];
+      localStorage.setItem('cart', JSON.stringify(state));
+    },
   },
 });
 
-export const { addToCart, removeFromCart,saveShippingAddress,savePaymentMethod} = cartSlice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  saveShippingAddress,
+  savePaymentMethod,
+  clearCartItems,
+} = cartSlice.actions;
+
 export default cartSlice.reducer;
