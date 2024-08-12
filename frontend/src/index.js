@@ -21,6 +21,7 @@ import CartScreen from "./screens/CartScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import ShippingScreen from "./screens/ShippingScreen";
+import PaymentScreen from "./screens/PaymentScreen";
 import PrivetRoute from "./components/PrivetRoute";
 
 //defines what rout3 will render what screen
@@ -37,6 +38,7 @@ const router = createBrowserRouter(
       {/* private routes */}
       <Route path="" element={<PrivetRoute />}>
         <Route path="/shipping" element={<ShippingScreen />} />
+        <Route path="/payment" element={<PaymentScreen />} />
       </Route>
     </Route>
   )
