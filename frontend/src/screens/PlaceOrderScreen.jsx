@@ -1,9 +1,17 @@
-import { useCreateOrderMutation } from '../slices/ordersApiSlice';
+import { useCreateOrderMutation } from "../slices/ordersApiSlice";
 
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { Button, Row, Col, ListGroup, Image, Card, ListGroupItem } from "react-bootstrap";
+import {
+  Button,
+  Row,
+  Col,
+  ListGroup,
+  Image,
+  Card,
+  ListGroupItem,
+} from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import CheckoutSteps from "../components/CheckOutSteps";
@@ -11,7 +19,7 @@ import Loader from "../components/Loader";
 import { clearCartItems } from "../slices/cartSlice";
 
 const PlaceOrderScreen = () => {
-  const [createOrder,{isLoading,error}] = useCreateOrderMutation();
+  const [createOrder, { isLoading, error }] = useCreateOrderMutation();
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -34,7 +42,7 @@ const PlaceOrderScreen = () => {
       dispatch(clearCartItems());
       navigate(`/order/${res._id}`);
     } catch (err) {
-      toast.error(err);
+      toast.error(err?.data?.message || err.message);
     }
   };
 
@@ -130,18 +138,22 @@ const PlaceOrderScreen = () => {
                   <Col>${cart.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
-              
+
               <ListGroup.Item>
-              {error && <Message variant='danger'>{error.message || "error"}</Message>}
+                {error && (
+                  <Message variant="danger">{error.message || "error"}</Message>
+                )}
               </ListGroup.Item>
               <ListGroup.Item>
                 <Button
-                type='button'
-                className='btn-block'
-                disabled={cart.cartItems.length ===0}
-                onClick={placeOrderHandler}
-                >Place Order</Button>
-                { isLoading && <Loader/>}
+                  type="button"
+                  className="btn-block"
+                  disabled={cart.cartItems.length === 0}
+                  onClick={placeOrderHandler}
+                >
+                  Place Order
+                </Button>
+                {isLoading && <Loader />}
               </ListGroup.Item>
             </ListGroup>
           </Card>
