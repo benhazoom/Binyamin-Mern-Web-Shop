@@ -17,10 +17,14 @@ const OrderScreen = () => {
   const { id: orderId } = useParams();
   const { userInfo } = useSelector((state) => state.auth);
   //queries
-  const { data: order, isLoading, error } = useGetOrderDetailsQuery(orderId);
+  const {
+    data: order,
+    isLoading,
+    error,
+    refetch,
+  } = useGetOrderDetailsQuery(orderId);
   const {
     data: paypal,
-    refetch,
     isLoading: loadingPaypal,
     error: errorPayPal,
   } = useGetPayPalClientIdQuery();
