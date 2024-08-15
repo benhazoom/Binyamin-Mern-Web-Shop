@@ -32,8 +32,9 @@ import PrivetRoute from "./components/PrivetRoute";
 import AdminRoute from "./components/AdminRoute";
 import OrderListScreen from "./screens/admin/OrderListScreen";
 import ProductListScreen from "./screens/admin/ProductListScreen";
+import PruductEditScreen from "./screens/admin/PruductEditScreen";
 
-//defines what rout3 will render what screen
+//defines what route will render what screen
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
@@ -57,6 +58,7 @@ const router = createBrowserRouter(
       <Route path="" element={<AdminRoute />}>
         <Route path="/admin/orderlist" element={<OrderListScreen />} />
         <Route path="/admin/productlist" element={<ProductListScreen />} />
+        <Route path="/admin/product/:id/edit" element={<PruductEditScreen />} />
       </Route>
     </Route>
   )
