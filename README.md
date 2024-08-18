@@ -112,12 +112,18 @@ jane@email.com (Customer)
 
 ### functionalities
 
+using defined methodology can help you be more efficient and your project to be more scaleable clear and bug free
+
 whenever wanting to add new functionality like 'Delete User By Id' or 'Update Product' I used this flow
-before the steps we make sure that we have that functionallity frontend endpoint like delete user button ore edit product button
+Pre Steps:
+1.make sure that we have that functionality frontend endpoint like delete user button or edit product button
+2.make sure that we have nothing else to commit and that the last commit works properly
+
 and than we:
-1.building the api call - in the _Controller_.
-2.defining the query/mutation - in the _Slice_.
-3.importing the query/mutation to the frontend - in the frontend _Component_.
+1.build the api call - in the _Controller_ and _Route_.
+2.define the query/mutation - in the _Slice_.
+3.import the query/mutation to the frontend - in the frontend _Component_.
+4.test the change - To be discussed
 
 ## Bug Fixes, corrections and code FAQ
 
