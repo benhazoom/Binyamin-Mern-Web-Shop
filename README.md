@@ -110,7 +110,8 @@ jane@email.com (Customer)
 
 
 ## Bug Fixes, corrections and code FAQ
-
+### TO-FIX 
+multer not working properly pictures are not uploading from choose image to directory
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for more details.
