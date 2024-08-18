@@ -2,7 +2,6 @@
 
 > Full stack application for a web eCommerce shop built using the MERN stack (MongoDB, Express, React, Node.js).
 
-
 <img src="./frontend/public/images/screens.png" alt="Project Screenshot">
 
 <!-- toc -->
@@ -15,6 +14,7 @@
 - [Build & Deploy](#build--deploy)
   - [Seed Database](#seed-database)
 
+* [WorkFlow and thought process](#WorkFlow-and-thought-process)
 * [Bug Fixes, corrections and code FAQ](#bug-fixes-corrections-and-code-faq)
 * [License](#license)
 
@@ -108,23 +108,36 @@ jane@email.com (Customer)
 123456
 ```
 
+## WorkFlow and thought process
+
+### functionalities
+
+whenever wanting to add new functionality like 'Delete User By Id' or 'Update Product' I used this flow
+before the steps we make sure that we have that functionallity frontend endpoint like delete user button ore edit product button
+and than we:
+1.building the api call - in the _Controller_.
+2.defining the query/mutation - in the _Slice_.
+3.importing the query/mutation to the frontend - in the frontend _Component_.
 
 ## Bug Fixes, corrections and code FAQ
-### TO-FIX 
+
+### TO-FIX
+
 multer not working properly pictures are not uploading from choose image to directory
 
 ## License
+
 This project is licensed under the MIT License. See the LICENSE file for more details.
 
-
 ## Contact Information
+
 For any questions or support, please reach out to me via email: benhazoom12@gmail.com
 
-
 ## Acknowledgments
+
 I would like to acknowledge Brad Traversy, Full Stack Web Developer & Instructor at Traversy Media, for his major help in making this project.
 The course for this project can be found here [MERN Stack From Scratch | eCommerce Platform](https://www.traversymedia.com/mern-stack-from-scratch) course.
 
-
 ## Credits
+
 This project was developed as part of a course taught by Brad Traversy. The original code and structure were created by Brad Traversy, and parts of this README were adapted from his original project README. His guidance and resources were invaluable in the creation of this project.

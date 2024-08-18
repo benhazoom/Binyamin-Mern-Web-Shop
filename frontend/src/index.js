@@ -33,6 +33,7 @@ import AdminRoute from "./components/AdminRoute";
 import OrderListScreen from "./screens/admin/OrderListScreen";
 import ProductListScreen from "./screens/admin/ProductListScreen";
 import PruductEditScreen from "./screens/admin/PruductEditScreen";
+import UserListScreen from "./screens/admin/UserListScreen";
 
 //defines what route will render what screen
 const router = createBrowserRouter(
@@ -58,6 +59,7 @@ const router = createBrowserRouter(
       <Route path="" element={<AdminRoute />}>
         <Route path="/admin/orderlist" element={<OrderListScreen />} />
         <Route path="/admin/productlist" element={<ProductListScreen />} />
+        <Route path="/admin/userlist" element={<UserListScreen />} />
         <Route path="/admin/product/:id/edit" element={<PruductEditScreen />} />
       </Route>
     </Route>
