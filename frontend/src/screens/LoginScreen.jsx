@@ -23,7 +23,7 @@ const LoginScreen = () => {
   const sp = new URLSearchParams(search);
   const redirect = sp.get("redirect") || "/";
 
-  //when one of this veriables changes [userInfo, redirect, navigate] we check if userInfo exists and if so redirecting 
+  //when one of this veriables changes [userInfo, redirect, navigate] we check if userInfo exists and if so redirecting
   useEffect(() => {
     if (userInfo) {
       navigate(redirect);
@@ -33,13 +33,13 @@ const LoginScreen = () => {
   const sumbitHandler = async (e) => {
     e.preventDefault();
     try {
-        const res = await login({email,password}).unwrap();//loging in thru loginMutation
-        dispatch(setCredentials({...res,}));//dispatching result to setCredentials to set the LocalStorage
-        navigate(redirect);
+      const res = await login({ email, password }).unwrap(); //loging in thru loginMutation
+      dispatch(setCredentials({ ...res })); //dispatching result to setCredentials to set the LocalStorage
+      navigate(redirect);
     } catch (err) {
-        toast.error(err?.data?.message || err.error);
-    }    
-};
+      toast.error(err?.data?.message || err.error);
+    }
+  };
 
   return (
     <FormContainer>
@@ -63,15 +63,23 @@ const LoginScreen = () => {
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
-        <Button type="submit" variant="primary" className="mt-2" disabled={isLoading}>
+        <Button
+          type="submit"
+          variant="primary"
+          className="mt-2"
+          disabled={isLoading}
+        >
           Sign In
         </Button>
 
-        { isLoading && <Loader/>}
+        {isLoading && <Loader />}
       </Form>
       <Row className="py-3">
         <Col>
-          New Customer? <Link to={redirect? `/register?redirect=${redirect}`: "/register"}>Register</Link>
+          New Customer?{" "}
+          <Link to={redirect ? `/register?redirect=${redirect}` : "/register"}>
+            Register
+          </Link>
         </Col>
       </Row>
     </FormContainer>
