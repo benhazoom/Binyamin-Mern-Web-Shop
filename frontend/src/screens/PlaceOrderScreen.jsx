@@ -14,7 +14,7 @@ import {
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
-import CheckoutSteps from "../components/CheckOutSteps";
+import CheckoutStepsBC from "../components/CheckOutStepsBC";
 import Loader from "../components/Loader";
 import { clearCartItems } from "../slices/cartSlice";
 
@@ -56,9 +56,15 @@ const PlaceOrderScreen = () => {
 
   return (
     <>
-      <CheckoutSteps step1 step2 step3 step4 />
       <Row>
+        <Col md={3}></Col>
         <Col md={8}>
+          <CheckoutStepsBC step1 step2 step3 step4 />
+        </Col>
+      </Row>
+
+      <Row>
+        <Col>
           <ListGroup varient="flush">
             <ListGroup.Item>
               <h2>Shipping</h2>

@@ -7,8 +7,12 @@ export const productApiSlice = apiSlice.injectEndpoints({
     // Adds a getProducts query endpoint
     getProducts: builder.query({
       // Specifies the URL for the products data
-      query: () => ({
+      query: ({ keyword, pageNumber }) => ({
         url: PRODUCTS_URL,
+        params: {
+          keyword,
+          pageNumber,
+        },
       }),
       providesTags: ["Products"],
       // Keeps unused data in the cache for 5 seconds
