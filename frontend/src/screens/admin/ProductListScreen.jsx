@@ -11,7 +11,6 @@ import {
 import { toast } from "react-toastify";
 import Paginate from "../../components/Paginate";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 const ProductListScreen = () => {
   const { pageNumber } = useParams();
