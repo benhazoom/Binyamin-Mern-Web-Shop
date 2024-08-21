@@ -6,7 +6,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { useParams } from "react-router-dom";
 import Paginate from "../components/Paginate";
-
+import ProductCarousel from "../components/ProductCarousel";
 const HomeScreen = () => {
   //now you see the true power of redux dev tools
   const { pageNumber, keyword } = useParams();
@@ -19,7 +19,9 @@ const HomeScreen = () => {
   );
   return (
     <>
-      {keyword && (
+      {!keyword ? (
+        <ProductCarousel />
+      ) : (
         <Link to="/" className="btn btn-light mb-4">
           Go Back
         </Link>
