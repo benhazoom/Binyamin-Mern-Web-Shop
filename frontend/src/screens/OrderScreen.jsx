@@ -60,7 +60,7 @@ const OrderScreen = () => {
     return actions.order.capture().then(async function (details) {
       try {
         //from our usePayOrder mutation
-        await payOrder({ orderId, details });
+        await payOrder({ orderId, details }).unwrap();
         refetch(); //refatches PayPal object and activates our use effect
         toast.success("Payment successful");
       } catch (err) {
