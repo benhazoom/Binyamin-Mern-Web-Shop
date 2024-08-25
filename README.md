@@ -17,7 +17,7 @@
 * [WorkFlow and thought process](#WorkFlow-and-thought-process)
 * [Bug Fixes, corrections and code FAQ](#bug-fixes-corrections-and-code-faq)
 * [License](#license)
-
+* [Future Enhancements and Improvements](Future-Enhancements-and-Improvements)
 <!-- tocstop -->
 
 ## Features
@@ -147,3 +147,8 @@ The course for this project can be found here [MERN Stack From Scratch | eCommer
 ## Credits
 
 This project was developed as part of a course taught by Brad Traversy. The original code and structure were created by Brad Traversy, and parts of this README were adapted from his original project README. His guidance and resources were invaluable in the creation of this project.
+
+## Future Enhancements and Improvements
+
+1. changing the time format of "Paid on" and "Delivered on" messages in the order page Delivered on 2024-08-25T08:06:41.770Z to Delivered on 2024-08-25 08:06:41
+2. uploadind pictures of product doesnt work
