@@ -33,8 +33,7 @@ const ProductEditScreen = () => {
     error,
   } = useGetProductDetailsQuery(productId);
 
-  const [uploadProductImage, { isLoading: loadingUpload }] =
-    useUploadProductImageMutation();
+  const [uploadProductImage] = useUploadProductImageMutation();
   const [updateProduct, { isLoading: loadingUpdate }] =
     useUpdateProductMutation();
 
