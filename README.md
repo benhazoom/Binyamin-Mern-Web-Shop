@@ -150,5 +150,12 @@ This project was developed as part of a course taught by Brad Traversy. The orig
 
 ## Future Enhancements and Improvements
 
-1. changing the time format of "Paid on" and "Delivered on" messages in the order page Delivered on 2024-08-25T08:06:41.770Z to Delivered on 2024-08-25 08:06:41
-2. uploadind pictures of product doesnt work
+### To-Do
+ - updating count in stock when order is placed to prevent overselling
+ - Admin restock ability 
+ - better order table for admin, and abillity to see unpaid and undelievered orders only 
+
+### Done
+ - uploadind pictures of product doesnt work - solved - in addition uploaded pictures will NOT be saved from session to session in production because we are using onRender free plan
+ - changing the time format of "Paid on" and "Delivered on" messages in the order screen - Delivered on 2024-08-25T08:06:41.770Z to Delivered on 2024-08-25 08:06:41
+

@@ -105,6 +105,20 @@ const OrderScreen = () => {
     }
   };
 
+  function formatDate(dateString) {
+    // Ensure the input is a Date object
+    const dateVeriable = new Date(dateString);
+
+    // Format the date part
+    const formattedDate = dateVeriable.toISOString().split('T')[0];
+
+    // Format the time part
+    const formattedTime = dateVeriable.toTimeString().split(' ')[0];
+
+    // Combine the date and time
+    return `${formattedDate} ${formattedTime}`;
+  }
+
   return isLoading ? (
     <Loader />
   ) : error ? (
@@ -132,7 +146,7 @@ const OrderScreen = () => {
               </p>
               {order.isDelivered ? (
                 <Message variant="success">
-                  Delivered on {order.deliveredAt}
+                  Delivered on {formatDate(order.deliveredAt)}
                 </Message>
               ) : (
                 <Message variant="danger">Not Delivered</Message>
@@ -146,7 +160,7 @@ const OrderScreen = () => {
                 {order.paymentMethod}
               </p>
               {order.isPaid ? (
-                <Message variant="success">Paid on {order.paidAt}</Message>
+                <Message variant="success">Paid on {formatDate(order.paidAt)}</Message>
               ) : (
                 <Message variant="danger">Not Paid</Message>
               )}

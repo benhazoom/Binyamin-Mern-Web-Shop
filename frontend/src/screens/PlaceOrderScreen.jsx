@@ -17,9 +17,9 @@ const PlaceOrderScreen = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
 
+  //need to add a update ciunt in stock to the items
   const placeOrderHandler = async () => {
     try {
-      console.log("create order start");
       const res = await createOrder({
         orderItems: cart.cartItems,
         shippingAddress: cart.shippingAddress,
@@ -29,7 +29,7 @@ const PlaceOrderScreen = () => {
         taxPrice: cart.taxPrice,
         totalPrice: cart.totalPrice,
       }).unwrap();
-      console.log(res);
+      // console.log(res);
 
       dispatch(clearCartItems());
       navigate(`/order/${res._id}`);

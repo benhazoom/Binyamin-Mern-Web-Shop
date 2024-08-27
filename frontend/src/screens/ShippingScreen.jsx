@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { saveShippingAddress } from "../slices/cartSlice";
 import CheckOutStepsBC from "../components/CheckOutStepsBC";
-
+import { toast } from "react-toastify";
 const ShippingScreen = () => {
     const cart = useSelector((state) => state.cart);
     const { shippingAddress } = cart;
@@ -15,19 +15,29 @@ const ShippingScreen = () => {
   const [postalCode, setPostalCode] = useState(shippingAddress?.postalCode || "");
   const [country, setCountry] = useState(shippingAddress?.country || "");
 
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const submitHandler = () => {
-    dispatch(saveShippingAddress({address,city,postalCode,country})); //dispatching result to setCredentials to set the LocalStorage
-    navigate('/payment');
+  const isFormValid = async (e) => {
+    e.preventDefault();
+    if (address && city && postalCode && country){
+      submitHandler();
+    }
+    else{
+      toast.warn("please fill in all the fields");
+    }
   };
+
+  const submitHandler = () => {
+      dispatch(saveShippingAddress({address,city,postalCode,country})); //dispatching result to setCredentials to set the LocalStorage
+      navigate('/payment');
+    }
+  
 
   return (
     <FormContainer>
       <CheckOutStepsBC step1 step2/>
-      <Form onSubmit={submitHandler}>
+      <Form onSubmit={isFormValid}>
         <Form.Group controlId="address" className="my-2">
           <Form.Label>Address</Form.Label>
           <Form.Control

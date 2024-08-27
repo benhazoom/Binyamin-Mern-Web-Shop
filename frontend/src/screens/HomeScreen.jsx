@@ -14,9 +14,9 @@ const HomeScreen = () => {
     pageNumber,
     keyword,
   });
-  console.log(
-    `page number - ${pageNumber} -isLoading ${isLoading} -data ${data}`
-  );
+  // console.log(
+  //   `page number - ${pageNumber} -isLoading ${isLoading} -data ${data}`
+  // );
   return (
     <>
       {!keyword ? (
