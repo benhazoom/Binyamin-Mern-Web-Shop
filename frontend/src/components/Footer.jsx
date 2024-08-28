@@ -10,7 +10,7 @@ const currentYear = new Date().getFullYear();
         <Container>
             <Row>
                 <Col className="text-center py-3">
-                <p>ProShop &copy; {currentYear}</p>
+                <p>ProShop &copy; {currentYear} | Visit my <a href="https://github.com/benhazoom" target="_blank" rel="noopener noreferrer">Github</a> or this shop <a href="https://github.com/benhazoom/Binyamin-Mern-Web-Shop" target="_blank" rel="noopener noreferrer">Repo</a></p>
                 </Col>
             </Row>
         </Container>

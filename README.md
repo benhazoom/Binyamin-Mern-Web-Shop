@@ -155,7 +155,11 @@ This project was developed as part of a course taught by Brad Traversy. The orig
  - Admin restock ability 
  - better order table for admin, and abillity to see unpaid and undelievered orders only 
 
-### Done
+### Done ever since launch
+
+
+#### small fixes 
  - uploadind pictures of product doesnt work - solved - in addition uploaded pictures will NOT be saved from session to session in production because we are using onRender free plan
  - changing the time format of "Paid on" and "Delivered on" messages in the order screen - Delivered on 2024-08-25T08:06:41.770Z to Delivered on 2024-08-25 08:06:41
-
+ - warning toast added when address isn't filled entirely to add frontend validation
+ - Meta and Message component default props switched to default values in parameters - no default props in the project

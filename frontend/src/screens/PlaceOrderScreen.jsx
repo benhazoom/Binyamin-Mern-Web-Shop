@@ -9,15 +9,37 @@ import Message from "../components/Message";
 import CheckoutStepsBC from "../components/CheckOutStepsBC";
 import Loader from "../components/Loader";
 import { clearCartItems } from "../slices/cartSlice";
+import {
+  useUpdateProductMutation
+} from "../slices/productApiSlice";
 
 const PlaceOrderScreen = () => {
   const [createOrder, { isLoading, error }] = useCreateOrderMutation();
+  const [updateProduct] = useUpdateProductMutation();
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
 
-  //need to add a update ciunt in stock to the items
+  const updateCountInStock = async (product) => {
+    // alert(product.countInStock-product.qty)
+    try {
+      const res = await updateProduct({
+        productId:String(product._id),
+        name:product.name,
+        price:product.price,
+        image:product.image,
+        brand:product.brand,
+        category:product.category,
+        description:product.description,
+        countInStock:product.countInStock-product.qty,
+      }).unwrap();
+    }
+    catch (err) {
+      toast.error(err?.data?.message || err.message);
+    }
+  }
+
   const placeOrderHandler = async () => {
     try {
       const res = await createOrder({
@@ -29,7 +51,12 @@ const PlaceOrderScreen = () => {
         taxPrice: cart.taxPrice,
         totalPrice: cart.totalPrice,
       }).unwrap();
-      // console.log(res);
+      //after order created we change instock value for each of the cart items 
+        const products = cart.cartItems;
+        cart.cartItems.forEach((product) => {
+          updateCountInStock(product);
+        })
+
 
       dispatch(clearCartItems());
       navigate(`/order/${res._id}`);
@@ -91,12 +118,12 @@ const PlaceOrderScreen = () => {
                           />
                         </Col>
                         <Col>
-                          <Link to={`/product/${item.product}`}>
+                          <Link to={`/product/${item._id}`}>
                             {item.name}
                           </Link>
                         </Col>
                         <Col md={4}>
-                          {item.qty} x ${item.price} = ${item.qty * item.price}
+                          {item.qty} x ${item.price} = ${(item.qty * item.price).toFixed(2)}
                         </Col>
                       </Row>
                     </ListGroup.Item>

@@ -30,6 +30,9 @@ const CartScreen = () => {
   const checkoutHandler = () => { 
     navigate('/login?redirect=/shipping')
    }
+  const continueShopingHandler = () => { 
+    navigate('/')
+   }
   return (
     <Row>
       <Col md={8}>
@@ -102,7 +105,17 @@ const CartScreen = () => {
               >
                 Proceed To Checkout
               </Button>
-            </ListGroup.Item>
+                </ListGroup.Item>
+              <ListGroup.Item>
+                <Button
+                  type="button"
+                  className="btn-block"
+                  disabled={cartItems.length === 0}
+                  onClick={continueShopingHandler}
+                >
+                  Continue Shoping
+                </Button>
+              </ListGroup.Item>
           </ListGroup>
         </Card>
       </Col>
