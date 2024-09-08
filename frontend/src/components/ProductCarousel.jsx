@@ -3,6 +3,7 @@ import { Carousel, Image } from "react-bootstrap";
 // import Loader from "./Loader";
 import Message from "./Message";
 import { useGetTopProductsQuery } from "../slices/productApiSlice";
+import Ratio from "react-bootstrap/Ratio";
 
 const ProductCarousel = () => {
   const { data: products, isLoading, error } = useGetTopProductsQuery();
@@ -15,9 +16,12 @@ const ProductCarousel = () => {
   ) : (
     <Carousel pause="hover" className="mb-4" data-bs-theme="dark">
       {products.map((product) => (
-        <Carousel.Item key={product._id} className="w-100">
+        <Carousel.Item key={product._id} className="w-100"
+        >
           <Link to={`/product/${product._id}`}>
-            <Image src={product.image} alt={product.name} fluid />
+            {/* <Ratio aspectRatio="1x1"> */}
+              <Image src={product.image} alt={product.name} fluid style={{ height: 500, width: "auto" }}/>
+            {/* </Ratio> */}
             <Carousel.Caption className="carousel-caption">
               <h2 className="text-white text-right">
                 {product.name} (${product.price})
