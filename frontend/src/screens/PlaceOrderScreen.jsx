@@ -10,28 +10,21 @@ import CheckoutStepsBC from "../components/CheckOutStepsBC";
 import Loader from "../components/Loader";
 import { clearCartItems } from "../slices/cartSlice";
 import {
-  useUpdateProductMutation
+  useUpdateProductCountMutation
 } from "../slices/productApiSlice";
 
 const PlaceOrderScreen = () => {
   const [createOrder, { isLoading, error }] = useCreateOrderMutation();
-  const [updateProduct] = useUpdateProductMutation();
+  const [updateProductCount] = useUpdateProductCountMutation();
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
 
   const updateCountInStock = async (product) => {
-    // alert(product.countInStock-product.qty)
     try {
-      const res = await updateProduct({
+      const res = await updateProductCount({
         productId:String(product._id),
-        name:product.name,
-        price:product.price,
-        image:product.image,
-        brand:product.brand,
-        category:product.category,
-        description:product.description,
         countInStock:product.countInStock-product.qty,
       }).unwrap();
     }
